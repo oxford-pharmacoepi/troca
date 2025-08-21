@@ -9,5 +9,5 @@ rsconnect::deployApp(
   forceUpdate = TRUE,
   logLevel = "verbose",
   account = "dpa-pde-oxford",
-  appFiles = c("app.R", "model/shinyData.RData", "renv.lock")
+  appFiles = c("app.R", "model/troca.duckdb", "renv.lock")
 )
