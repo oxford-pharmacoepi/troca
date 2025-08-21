@@ -4,7 +4,10 @@
 \alias{troca}
 \title{Create the TROCA shiny app}
 \usage{
-troca()
+troca(store)
+}
+\arguments{
+\item{store}{Link to the store object.}
 }
 \value{
 Opens the shiny app

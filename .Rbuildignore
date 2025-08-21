@@ -1,5 +1,9 @@
 ^troca\.Rproj$
 ^\.Rproj\.user$
-model/
+^model$
+^extras$
 ^data-raw$
 ^LICENSE\.md$
+^\.github$
+*.qmd
+_quarto.yml

@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: _site
+
+date: today
+
+website:
+  title: "TROCA"
+  open-graph: true # https://quarto.org/docs/websites/website-tools.html#open-graph
+  repo-url: https://github.com/oxford-pharmacoepi/troca
+  repo-actions: [issue]
+  page-footer:
+    center: "Rendered on {{< meta date >}}"
+    left: "Copyright 2025, Oxinfer"
+  navbar:
+    left:
+      - text: Index
+        href: index.qmd
+    right:
+      - text: Oxinfer
+        href: https://oxford-pharmacoepi.github.io/Oxinfer/
+      - href: https://github.com/oxford-pharmacoepi/troca
+        icon: github
+      - href: https://www.youtube.com/@oxinfer
+        icon: youtube
+
+format:
+  html:
+    toc: true
+    theme: cosmo
+    search: false

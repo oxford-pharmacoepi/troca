@@ -15,7 +15,6 @@ Imports:
     bslib,
     cli,
     ellmer,
-    here,
     purrr,
     ragnar,
     shiny,
@@ -23,4 +22,6 @@ Imports:
 Depends: 
     R (>= 3.5)
 Suggests: 
+    here,
+    rsconnect,
     stringr

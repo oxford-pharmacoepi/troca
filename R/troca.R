@@ -1,10 +1,12 @@
 
 #' Create the TROCA shiny app
 #'
+#' @param store Link to the store object.
+#'
 #' @return Opens the shiny app
 #' @export
 #'
-troca <- function() {
+troca <- function(store) {
 
   ui <- bslib::page_fluid(
     shinychat::chat_ui("chat")
@@ -15,9 +17,7 @@ troca <- function() {
       system_prompt = prompt,
       api_key = Sys.getenv("GOOGLE_API_KEY")
     )
-    store <- ragnar::ragnar_store_connect(
-      location = here::here("model", "troca.duckdb")
-    )
+
     chat <- ragnar::ragnar_register_tool_retrieve(
       chat = chat,
       store = store,
@@ -42,8 +42,8 @@ appendSublinks <- function(x) {
     })
 }
 
-trainModel <- function() {
-  dbdir <- here::here("model", "troca.duckdb")
+trainModel <- function(path) {
+  dbdir <- file.path(path, "troca.duckdb")
   unlink(dbdir, force = TRUE)
   unlink(paste0(dbdir, ".wal"), force = TRUE)
 
