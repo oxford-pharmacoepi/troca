@@ -49,7 +49,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF##*/}}
-          echo "Current branch: $BRANCH_NAME"
           Rscript -e "pak::pkg_install('oxford-pharmacoepi/troca@$BRANCH_NAME')"
 
       - name: install troca from main

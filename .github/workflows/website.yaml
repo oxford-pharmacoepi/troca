@@ -27,6 +27,17 @@ jobs:
             pak
           cache-version: v1  # Change this to invalidate cache manually
 
+      - name: Install troca from branch
+        if: github.event_name == 'pull_request'
+        run: |
+          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF##*/}}
+          Rscript -e "pak::pkg_install('oxford-pharmacoepi/troca@$BRANCH_NAME')"
+
+      - name: install troca from main
+        if: github.event_name != 'pull_request'
+        run: |
+          Rscript -e 'pak::pkg_install("oxford-pharmacoepi/troca")'
+
       - name: Install project-specific R dependencies
         shell: Rscript {0}
         run: |

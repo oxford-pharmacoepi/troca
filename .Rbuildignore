@@ -5,5 +5,5 @@
 ^data-raw$
 ^LICENSE\.md$
 ^\.github$
-*.qmd
+\.qmd$
 _quarto.yml
