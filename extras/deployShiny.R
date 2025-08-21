@@ -5,7 +5,7 @@ rsconnect::setAccountInfo(
 )
 rsconnect::deployApp(
   appDir = here::here("extras", "shiny"),
-  appName = "troca",
+  appName = "troca2",
   forceUpdate = TRUE,
   logLevel = "verbose",
   account = "dpa-pde-oxford",
