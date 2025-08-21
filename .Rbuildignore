@@ -1,0 +1,5 @@
+^troca\.Rproj$
+^\.Rproj\.user$
+model/
+^data-raw$
+^LICENSE\.md$
