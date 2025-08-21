@@ -43,7 +43,7 @@ jobs:
       - name: Install packages
         run: |
           Rscript -e 'install.packages("pak")'
-          Rscript -e 'pak::pkg_install(c("renv", "here", "rsconnect", "cpp11"))'
+          Rscript -e 'pak::pkg_install(c("renv", "here", "rsconnect", "cpp11", "ellmer"))'
 
       - name: Install troca from branch
         if: github.event_name == 'pull_request'
@@ -55,6 +55,9 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           Rscript -e 'pak::pkg_install("oxford-pharmacoepi/troca")'
+
+      - name: Save API key
+        run: Rscript extras/saveApiKey.R
 
       - name: Create renv file
         run: Rscript -e 'renv::init()'

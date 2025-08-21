@@ -4,10 +4,12 @@
 \alias{troca}
 \title{Create the TROCA shiny app}
 \usage{
-troca(store)
+troca(store, chat)
 }
 \arguments{
 \item{store}{Link to the store object.}
+
+\item{chat}{Ellmer chat.}
 }
 \value{
 Opens the shiny app

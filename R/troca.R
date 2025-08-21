@@ -2,28 +2,26 @@
 #' Create the TROCA shiny app
 #'
 #' @param store Link to the store object.
+#' @param chat Ellmer chat.
 #'
 #' @return Opens the shiny app
 #' @export
 #'
-troca <- function(store) {
+troca <- function(store, chat) {
+
+  chat <- chat$set_system_prompt(value = prompt)
+
+  chat <- ragnar::ragnar_register_tool_retrieve(
+    chat = chat,
+    store = store,
+    top_k = 10
+  )
 
   ui <- bslib::page_fluid(
     shinychat::chat_ui("chat")
   )
 
   server <- function(input, output, session) {
-    chat <- ellmer::chat_google_gemini(
-      system_prompt = prompt,
-      api_key = Sys.getenv("GOOGLE_API_KEY")
-    )
-
-    chat <- ragnar::ragnar_register_tool_retrieve(
-      chat = chat,
-      store = store,
-      top_k = 10
-    )
-
     shiny::observeEvent(input$chat_user_input, {
       stream <- chat$stream_async(input$chat_user_input)
       shinychat::chat_append(id = "chat", response = stream)
