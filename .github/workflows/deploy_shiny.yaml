@@ -43,7 +43,7 @@ jobs:
       - name: Install packages
         run: |
           Rscript -e 'install.packages("pak")'
-          Rscript -e 'pak::pkg_install(c("renv", "here", "rsconnect"))'
+          Rscript -e 'pak::pkg_install(c("renv", "here", "rsconnect", "cpp11"))'
 
       - name: Install troca from branch
         if: github.event_name == 'pull_request'
