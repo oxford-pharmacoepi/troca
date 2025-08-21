@@ -33,6 +33,15 @@ troca <- function() {
   shiny::shinyApp(ui, server)
 }
 
+appendSublinks <- function(x) {
+  x |>
+    purrr::map(\(x) {
+      sublinks <- ragnar::ragnar_find_links(x = x$link)
+      x$sublinks <- sublinks[!basename(sublinks) %in% c("CONTRIBUTING.html", "LICENSE.html")]
+      x
+    })
+}
+
 trainModel <- function() {
   dbdir <- here::here("model", "troca.duckdb")
   unlink(dbdir, force = TRUE)
@@ -46,11 +55,8 @@ trainModel <- function() {
 
   # read chunks
   chunks <- documentation |>
-    purrr::map(\(x) {
-      sublinks <- ragnar::ragnar_find_links(x = x$link)
-      sublinks <- sublinks[!basename(sublinks) %in% c("CONTRIBUTING.html", "LICENSE.html")]
-      sublinks
-    }) |>
+    appendSublinks() |>
+    purrr::map(\(x) x$sublinks) |>
     unlist(use.names = FALSE) |>
     unique() |>
     purrr::map(\(link) {
