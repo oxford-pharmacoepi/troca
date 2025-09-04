@@ -1,21 +1,35 @@
 
 #' Create the TROCA shiny app
 #'
-#' @param store Link to the store object.
 #' @param chat Ellmer chat.
+#' @param storeName Name of the store or path to it, if it does not exist it
+#' will be created.
 #'
 #' @return Opens the shiny app
 #' @export
 #'
-troca <- function(store, chat) {
+troca <- function(chat, storeName = "troca") {
+  # input check
+  omopgenerics::assertCharacter(storeName, length = 1)
 
+  if (file.exists(storeName)) {
+    trocaPath <- storeName
+  } else {
+    if (!endsWith(x = storeName, suffix = ".duckdb")) {
+      storeName <- paste0(storeName, ".duckdb")
+    }
+    trocaPath <- file.path(dataFolder(), storeName)
+    if (!file.exists(trocaPath)) {
+      trainModel(dbdir = trocaPath)
+    }
+  }
+
+  # set prompt
   chat <- chat$set_system_prompt(value = prompt)
 
-  chat <- ragnar::ragnar_register_tool_retrieve(
-    chat = chat,
-    store = store,
-    top_k = 10
-  )
+  # store
+  store <- ragnar::ragnar_store_connect(location = trocaPath)
+  chat <- ragnar::ragnar_register_tool_retrieve(chat = chat, store = store)
 
   ui <- bslib::page_fluid(
     shinychat::chat_ui("chat")
@@ -31,6 +45,24 @@ troca <- function(store, chat) {
   shiny::shinyApp(ui, server)
 }
 
+dataFolder <- function() {
+  folder <- Sys.getenv("OMOP_DATA_FOLDER", unset = "")
+  if (identical(folder, "")) {
+    cli::cli_inform(c(
+      "!" = "`OMOP_DATA_FOLDER` environment variable has not been set up, using temp folder.",
+      "i" = "Please set an environement variable pointing to a folder to save data."
+    ))
+    folder <- file.path(tempdir(), "OMOP_DATA_FOLDER")
+    dir.create(folder)
+  } else {
+    folder <- file.path(folder, "TROCA_MODELS")
+    if (!dir.exists(folder)) {
+      cli::cli_inform(c("i" = "Creating folder ({.path {folder}}) as it did not exist."))
+      dir.create(folder)
+    }
+  }
+  return(folder)
+}
 appendSublinks <- function(x) {
   x |>
     purrr::map(\(x) {
@@ -39,16 +71,13 @@ appendSublinks <- function(x) {
       x
     })
 }
-
-trainModel <- function(path) {
-  dbdir <- file.path(path, "troca.duckdb")
-  unlink(dbdir, force = TRUE)
-  unlink(paste0(dbdir, ".wal"), force = TRUE)
-
+trainModel <- function(dbdir) {
+  # create storage
   store <- ragnar::ragnar_store_create(
     location = dbdir,
-    embed = \(x) ragnar::embed_ollama(x, model = "mxbai-embed-large"),
-    name = "troca"
+    embed = NULL,
+    name = "troca",
+    overwrite = TRUE
   )
 
   # read chunks
@@ -72,12 +101,9 @@ trainModel <- function(path) {
 
   # Embeding information
   cli::cli_inform(c(i = "Embeding retrieved information."))
-  cli::cli_progress_bar("Embeding", total = length(chunks), type = "tasks")
   for (k in seq_along(chunks)) {
     ragnar::ragnar_store_insert(store = store, chunks = chunks[[k]])
-    cli::cli_progress_update()
   }
-  cli::cli_progress_done()
 
   # build store index
   ragnar::ragnar_store_build_index(store = store)

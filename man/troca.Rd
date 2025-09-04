@@ -4,12 +4,13 @@
 \alias{troca}
 \title{Create the TROCA shiny app}
 \usage{
-troca(store, chat)
+troca(chat, storeName = "troca")
 }
 \arguments{
-\item{store}{Link to the store object.}
-
 \item{chat}{Ellmer chat.}
+
+\item{storeName}{Name of the store or path to it, if it does not exist it
+will be created.}
 }
 \value{
 Opens the shiny app
