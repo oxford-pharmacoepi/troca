@@ -1,5 +1,5 @@
 
-#troca:::trainModel(dbdir = here::here("extras", "shiny", "model", "troca.duckdb"))
+troca:::trainModel(dbdir = here::here("extras", "shiny", "model", "troca.duckdb"))
 envVars <- c(
   GOOGLE_API_KEY = Sys.getenv("GOOGLE_API_KEY")
 ) |>
