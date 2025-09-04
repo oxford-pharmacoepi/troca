@@ -56,8 +56,8 @@ jobs:
         run: |
           Rscript -e 'pak::pkg_install("oxford-pharmacoepi/troca")'
 
-      - name: Save API key
-        run: Rscript extras/saveApiKey.R
+      - name: Create TROCA knowledge data
+        run: Rscript extras/prepareShiny.R
 
       - name: Create renv file
         run: Rscript -e 'renv::init()'
