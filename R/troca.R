@@ -24,12 +24,12 @@ troca <- function(chat, storeName = "troca") {
     }
   }
 
-  # set prompt
-  chat <- chat$set_system_prompt(value = prompt)
-
   # store
   store <- ragnar::ragnar_store_connect(location = trocaPath)
   chat <- ragnar::ragnar_register_tool_retrieve(chat = chat, store = store)
+
+  # set prompt
+  chat <- chat$set_system_prompt(value = prompt)
 
   ui <- bslib::page_fluid(
     shinychat::chat_ui("chat")
