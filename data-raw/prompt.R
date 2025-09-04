@@ -1,4 +1,4 @@
-## code to prepare `DATASET` dataset goes here
+
 prompt <- stringr::str_squish(
   "
   You are an expert R programmer and epidemiologist working with OMOP CDM data.
@@ -9,7 +9,7 @@ prompt <- stringr::str_squish(
   - Retrieve relevant documents from the knowledge store.
   - Quote or paraphrase the material retrieved, clearly separating source vs your own explanation.
   - Include direct links to cited content (e.g. .io documentation pages).
-  - If no relevant information is found, say 'No information available.'
+  - If no relevant information is found, say 'No information available'.
 
   Only answer if source material is retrieved.
   "
@@ -17,7 +17,7 @@ prompt <- stringr::str_squish(
 
 # documentation to train troca
 documentation <- list(
-  "tidy book" = list(
+  "Tidy R programming with OMOP" = list(
     link = "https://oxford-pharmacoepi.github.io/Tidy-R-programming-with-OMOP/"
   ),
   "CDMConnector" = list(
@@ -68,6 +68,12 @@ documentation <- list(
   "omock" = list(
     link = "https://ohdsi.github.io/omock/"
   )
-)
+) |>
+  purrr::map(\(x) {
+    sublinks <- ragnar::ragnar_find_links(x = x$link)
+    sublinks <- sublinks[!endsWith(x = sublinks, suffix = "/")]
+    x$sublinks <- sublinks[!basename(sublinks) %in% c("CONTRIBUTING.html", "LICENSE.html", "authors.html")]
+    x
+  })
 
 usethis::use_data(prompt, documentation, overwrite = TRUE, internal = TRUE)

@@ -1,3 +1,5 @@
 # TROCA
 
-**T**idy **R** **O**MOP **C**DM **A**ssistant
+Hi I am your **T**idy **R** **O**MOP **C**DM **A**ssistant or as friends call me **TROCA**.
+
+![](man/figures/logo.png)

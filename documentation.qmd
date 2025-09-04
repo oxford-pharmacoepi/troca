@@ -1,0 +1,32 @@
+
+# TROCA Training
+
+```{r, eval=TRUE, echo=FALSE}
+doc <- troca:::documentation
+```
+
+## Training material
+
+TROCA has been trained with several materials from `r length(doc)` different sources:
+
+```{r, eval=TRUE, echo=FALSE, results='asis'}
+doc |>
+  purrr::imap_chr(\(x, nm) {
+    paste0("* [", nm, "](", x$link, ")")
+  }) |>
+  cat(sep = "\n")
+```
+
+## Prompt
+
+TROCA is set to use the following prompt:
+
+```{r, echo=FALSE, results='asis'}
+cat("```{.text code-block=true}\n")
+troca:::prompt |>
+  stringr::str_replace(pattern = "CohortConstructor\\)\\. ", replacement = "CohortConstructor\\)\\.\n\n") |>
+  stringr::str_replace(pattern = " Only", replacement = "\n\nOnly") |>
+  stringr::str_replace_all(pattern = "\\-", replacement = "\n\\-") |>
+  cat()
+cat("\n```\n")
+```

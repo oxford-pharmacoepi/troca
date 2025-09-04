@@ -63,14 +63,6 @@ dataFolder <- function() {
   }
   return(folder)
 }
-appendSublinks <- function(x) {
-  x |>
-    purrr::map(\(x) {
-      sublinks <- ragnar::ragnar_find_links(x = x$link)
-      x$sublinks <- sublinks[!basename(sublinks) %in% c("CONTRIBUTING.html", "LICENSE.html")]
-      x
-    })
-}
 trainModel <- function(dbdir) {
   # create storage
   store <- ragnar::ragnar_store_create(
@@ -82,7 +74,6 @@ trainModel <- function(dbdir) {
 
   # read chunks
   chunks <- documentation |>
-    appendSublinks() |>
     purrr::map(\(x) x$sublinks) |>
     unlist(use.names = FALSE) |>
     unique() |>

@@ -14,8 +14,10 @@ website:
     left: "Copyright 2025, Oxinfer"
   navbar:
     left:
-      - text: Index
-        href: index.qmd
+      - text: How TROCA is trained?
+        href: documentation.qmd
+      - text: Have a chat with TROCA
+        href: chat_with_troca.qmd
     right:
       - text: Oxinfer
         href: https://oxford-pharmacoepi.github.io/Oxinfer/
@@ -29,3 +31,4 @@ format:
     toc: true
     theme: cosmo
     search: false
+    code-copy: true
