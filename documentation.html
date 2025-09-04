@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-09-04">
 
-<title>TROCA</title>
+<title>documentation – TROCA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,8 +71,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="TROCA">
-<meta property="og:description" content="">
-<meta property="og:image" content="man/figures/logo.png">
 <meta property="og:site_name" content="TROCA">
 </head>
 
@@ -94,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./documentation.html"> 
+    <a class="nav-link active" href="./documentation.html" aria-current="page"> 
 <span class="menu-text">How TROCA is trained?</span></a>
   </li>  
   <li class="nav-item">
@@ -133,7 +131,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#troca" id="toc-troca" class="nav-link active" data-scroll-target="#troca">TROCA</a></li>
+  <li><a href="#troca-training" id="toc-troca-training" class="nav-link active" data-scroll-target="#troca-training">TROCA Training</a>
+  <ul class="collapse">
+  <li><a href="#training-material" id="toc-training-material" class="nav-link" data-scroll-target="#training-material">Training material</a></li>
+  <li><a href="#prompt" id="toc-prompt" class="nav-link" data-scroll-target="#prompt">Prompt</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/oxford-pharmacoepi/troca/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -164,12 +166,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="troca" class="level1">
-<h1>TROCA</h1>
-<p>Hi I am your <strong>T</strong>idy <strong>R</strong> <strong>O</strong>MOP <strong>C</strong>DM <strong>A</strong>ssistant or as friends call me <strong>TROCA</strong>.</p>
-<p><img src="man/figures/logo.png" class="img-fluid"></p>
+<section id="troca-training" class="level1">
+<h1>TROCA Training</h1>
+<section id="training-material" class="level2">
+<h2 class="anchored" data-anchor-id="training-material">Training material</h2>
+<p>TROCA has been trained with several materials from 17 different sources:</p>
+<ul>
+<li><a href="https://oxford-pharmacoepi.github.io/Tidy-R-programming-with-OMOP/">Tidy R programming with OMOP</a></li>
+<li><a href="https://darwin-eu.github.io/CDMConnector/">CDMConnector</a></li>
+<li><a href="https://darwin-eu.github.io/omopgenerics/">omopgenerics</a></li>
+<li><a href="https://ohdsi.github.io/CohortConstructor/">CohortConstructor</a></li>
+<li><a href="https://darwin-eu.github.io/visOmopResults/">visOmopResults</a></li>
+<li><a href="https://ohdsi.github.io/PhenotypeR/">PhenotypeR</a></li>
+<li><a href="https://ohdsi.github.io/OmopViewer/">OmopViewer</a></li>
+<li><a href="https://darwin-eu.github.io/DrugUtilisation/">DrugUtilisation</a></li>
+<li><a href="https://darwin-eu.github.io/IncidencePrevalence/">IncidencePrevalence</a></li>
+<li><a href="https://darwin-eu.github.io/DrugExposureDiagnostics/">DrugExposureDiagnostics</a></li>
+<li><a href="https://ohdsi.github.io/MeasurementDiagnostics/">MeasurementDiagnostics</a></li>
+<li><a href="https://darwin-eu.github.io/PatientProfiles/">PatientProfiles</a></li>
+<li><a href="https://darwin-eu.github.io/CohortCharacteristics/">CohortCharacteristics</a></li>
+<li><a href="https://OHDSI.github.io/OmopSketch/">OmopSketch</a></li>
+<li><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></li>
+<li><a href="https://darwin-eu-dev.github.io/CohortSurvival/">CohortSurvival</a></li>
+<li><a href="https://ohdsi.github.io/omock/">omock</a></li>
+</ul>
+</section>
+<section id="prompt" class="level2">
+<h2 class="anchored" data-anchor-id="prompt">Prompt</h2>
+<p>TROCA is set to use the following prompt:</p>
+<pre class="text" data-code-block="true"><code>You are an expert R programmer and epidemiologist working with OMOP CDM data. Use concise, accurate R examples using OMOPverse packages (e.g. CDMConnector, CohortConstructor).
+
+Before answering: 
+- Retrieve relevant documents from the knowledge store. 
+- Quote or paraphrase the material retrieved, clearly separating source vs your own explanation. 
+- Include direct links to cited content (e.g. .io documentation pages). 
+- If no relevant information is found, say 'No information available'.
+
+Only answer if source material is retrieved.</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
