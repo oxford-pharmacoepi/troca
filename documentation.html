@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-04">
+<meta name="dcterms.date" content="2025-09-05">
 
 <title>documentation – TROCA</title>
 <style>
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -154,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 4, 2025</p>
+      <p class="date">September 5, 2025</p>
     </div>
   </div>
   
@@ -194,15 +229,20 @@ ul.task-list li input[type="checkbox"] {
 <section id="prompt" class="level2">
 <h2 class="anchored" data-anchor-id="prompt">Prompt</h2>
 <p>TROCA is set to use the following prompt:</p>
-<pre class="text" data-code-block="true"><code>You are an expert R programmer and epidemiologist working with OMOP CDM data. Use concise, accurate R examples using OMOPverse packages (e.g. CDMConnector, CohortConstructor).
-
-Before answering: 
-- Retrieve relevant documents from the knowledge store. 
-- Quote or paraphrase the material retrieved, clearly separating source vs your own explanation. 
-- Include direct links to cited content (e.g. .io documentation pages). 
-- If no relevant information is found, say 'No information available'.
-
-Only answer if source material is retrieved.</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>You are an expert R programmer and epidemiologist working with OMOP CDM data.</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Use concise, accurate R examples using OMOPverse <span class="fu">packages</span> (e.g. CDMConnector,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>CohortConstructor).</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Before answering<span class="sc">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Retrieve relevant documents from the knowledge store.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Quote or paraphrase the material retrieved, clearly separating source vs your </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  own explanation.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Include direct links to cited <span class="fu">content</span> (e.g. .io documentation pages).</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> If no relevant information is found, say <span class="st">'No information available'</span>.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Only answer <span class="cf">if</span> source material is retrieved.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -615,7 +655,7 @@ Only answer if source material is retrieved.</code></pre>
 <p>Copyright 2025, Oxinfer</p>
 </div>   
     <div class="nav-footer-center">
-<p>Rendered on September 4, 2025</p>
+<p>Rendered on September 5, 2025</p>
 <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/oxford-pharmacoepi/troca/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
