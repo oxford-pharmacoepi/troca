@@ -64,14 +64,6 @@ dataFolder <- function() {
   return(folder)
 }
 trainModel <- function(dbdir) {
-  # create storage
-  store <- ragnar::ragnar_store_create(
-    location = dbdir,
-    embed = NULL,
-    name = "troca",
-    overwrite = TRUE
-  )
-
   # read chunks
   chunks <- documentation |>
     purrr::map(\(x) x$sublinks) |>
@@ -81,7 +73,7 @@ trainModel <- function(dbdir) {
       tryCatch(
         expr = {
           cli::cli_inform(c("i" = "Reading information from {.url {link}}"))
-          ragnar::markdown_chunk(ragnar::read_as_markdown(link))
+          ragnar::markdown_chunk(ragnar::read_as_markdown(link), target_size = Inf)
         },
         error = function(e) {
           cli::cli_inform(c("x" = "Failed to read markdown in {.url {link}}"))
@@ -89,6 +81,14 @@ trainModel <- function(dbdir) {
         })
     }) |>
     purrr::compact()
+
+  # create storage
+  store <- ragnar::ragnar_store_create(
+    location = dbdir,
+    embed = NULL,
+    name = "troca",
+    overwrite = TRUE
+  )
 
   # Embeding information
   cli::cli_inform(c(i = "Embeding retrieved information."))
