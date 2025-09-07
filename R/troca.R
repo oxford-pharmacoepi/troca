@@ -33,7 +33,7 @@ troca <- function(chat, storeName = "troca") {
 
   # avatar
   avatar <- system.file("logo.png", package = "troca")
-  avatar <- shiny::tags$img(src = avatar, width = "32px", height = "32px")
+  avatar <- shiny::tags$img(src = avatar, height = "32px")
 
   ui <- bslib::page_fluid(
     shinychat::chat_ui("chat", icon_assistant = avatar)
