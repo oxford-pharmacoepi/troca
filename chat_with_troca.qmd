@@ -1,6 +1,8 @@
 
 # TROCA
 
+Give TROCA some seconds to get ready...
+
 <iframe src="https://dpa-pde-oxford.shinyapps.io/troca/" 
         width="100%" 
         height="700" 

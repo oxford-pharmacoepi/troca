@@ -19,55 +19,55 @@ prompt <- stringr::str_squish(
 documentation <- list(
   "Tidy R programming with OMOP" = list(
     link = "https://oxford-pharmacoepi.github.io/Tidy-R-programming-with-OMOP/"
-  )#,
-  # "CDMConnector" = list(
-  #   link = "https://darwin-eu.github.io/CDMConnector/"
-  # ),
-  # "omopgenerics" = list(
-  #   link = "https://darwin-eu.github.io/omopgenerics/"
-  # ),
-  # "CohortConstructor" = list(
-  #   link = "https://ohdsi.github.io/CohortConstructor/"
-  # ),
-  # "visOmopResults" = list(
-  #   link = "https://darwin-eu.github.io/visOmopResults/"
-  # ),
-  # "PhenotypeR" = list(
-  #   link = "https://ohdsi.github.io/PhenotypeR/"
-  # ),
-  # "OmopViewer" = list(
-  #   link = "https://ohdsi.github.io/OmopViewer/"
-  # ),
-  # "DrugUtilisation" = list(
-  #   link = "https://darwin-eu.github.io/DrugUtilisation/"
-  # ),
-  # "IncidencePrevalence" = list(
-  #   link = "https://darwin-eu.github.io/IncidencePrevalence/"
-  # ),
-  # "DrugExposureDiagnostics" = list(
-  #   link = "https://darwin-eu.github.io/DrugExposureDiagnostics/"
-  # ),
-  # "MeasurementDiagnostics" = list(
-  #   link = "https://ohdsi.github.io/MeasurementDiagnostics/"
-  # ),
-  # "PatientProfiles" = list(
-  #   link = "https://darwin-eu.github.io/PatientProfiles/"
-  # ),
-  # "CohortCharacteristics" = list(
-  #   link = "https://darwin-eu.github.io/CohortCharacteristics/"
-  # ),
-  # "OmopSketch" = list(
-  #   link = "https://OHDSI.github.io/OmopSketch/"
-  # ),
-  # "CodelistGenerator" = list(
-  #   link = "https://darwin-eu.github.io/CodelistGenerator/"
-  # ),
-  # "CohortSurvival" = list(
-  #   link = "https://darwin-eu-dev.github.io/CohortSurvival/"
-  # ),
-  # "omock" = list(
-  #   link = "https://ohdsi.github.io/omock/"
-  # )
+  ),
+  "CDMConnector" = list(
+    link = "https://darwin-eu.github.io/CDMConnector/"
+  ),
+  "omopgenerics" = list(
+    link = "https://darwin-eu.github.io/omopgenerics/"
+  ),
+  "CohortConstructor" = list(
+    link = "https://ohdsi.github.io/CohortConstructor/"
+  ),
+  "visOmopResults" = list(
+    link = "https://darwin-eu.github.io/visOmopResults/"
+  ),
+  "PhenotypeR" = list(
+    link = "https://ohdsi.github.io/PhenotypeR/"
+  ),
+  "OmopViewer" = list(
+    link = "https://ohdsi.github.io/OmopViewer/"
+  ),
+  "DrugUtilisation" = list(
+    link = "https://darwin-eu.github.io/DrugUtilisation/"
+  ),
+  "IncidencePrevalence" = list(
+    link = "https://darwin-eu.github.io/IncidencePrevalence/"
+  ),
+  "DrugExposureDiagnostics" = list(
+    link = "https://darwin-eu.github.io/DrugExposureDiagnostics/"
+  ),
+  "MeasurementDiagnostics" = list(
+    link = "https://ohdsi.github.io/MeasurementDiagnostics/"
+  ),
+  "PatientProfiles" = list(
+    link = "https://darwin-eu.github.io/PatientProfiles/"
+  ),
+  "CohortCharacteristics" = list(
+    link = "https://darwin-eu.github.io/CohortCharacteristics/"
+  ),
+  "OmopSketch" = list(
+    link = "https://OHDSI.github.io/OmopSketch/"
+  ),
+  "CodelistGenerator" = list(
+    link = "https://darwin-eu.github.io/CodelistGenerator/"
+  ),
+  "CohortSurvival" = list(
+    link = "https://darwin-eu-dev.github.io/CohortSurvival/"
+  ),
+  "omock" = list(
+    link = "https://ohdsi.github.io/omock/"
+  )
 ) |>
   purrr::map(\(x) {
     sublinks <- ragnar::ragnar_find_links(x = x$link)
