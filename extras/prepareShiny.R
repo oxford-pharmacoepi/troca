@@ -16,4 +16,8 @@ envVars <- c(
   unname()
 writeLines(text = envVars, con = here::here("extras", "shiny", ".Renviron"))
 
+print(Sys.getenv("GOOGLE_CREDENTIALS_JSON"))
+print(readLines(here::here("extras", "shiny", ".Renviron")))
+print(readLines(here::here("extras", "shiny", "credentials.json")))
+
 troca:::trainModel(dbdir = here::here("extras", "shiny", "model", "troca.duckdb"))
