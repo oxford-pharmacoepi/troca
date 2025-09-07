@@ -52,3 +52,6 @@ rsconnect/
 /.quarto/
 _site/
 extras/shiny/.Renviron
+*.DS_Store
+*credentials.json
+*.Renviron

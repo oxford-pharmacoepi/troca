@@ -26,7 +26,7 @@ troca <- function(chat, storeName = "troca") {
 
   # store
   store <- ragnar::ragnar_store_connect(location = trocaPath)
-  chat <- ragnar::ragnar_register_tool_retrieve(chat = chat, store = store)
+  chat <- ragnar::ragnar_register_tool_retrieve(chat = chat, store = store, top_k = 10)
 
   # set prompt
   chat <- chat$set_system_prompt(value = prompt)
@@ -73,7 +73,7 @@ trainModel <- function(dbdir) {
       tryCatch(
         expr = {
           cli::cli_inform(c("i" = "Reading information from {.url {link}}"))
-          ragnar::markdown_chunk(ragnar::read_as_markdown(link), target_size = Inf)
+          ragnar::markdown_chunk(ragnar::read_as_markdown(link))
         },
         error = function(e) {
           cli::cli_inform(c("x" = "Failed to read markdown in {.url {link}}"))
@@ -85,8 +85,12 @@ trainModel <- function(dbdir) {
   # create storage
   store <- ragnar::ragnar_store_create(
     location = dbdir,
-    embed = NULL,
-    name = "troca",
+    embed = \(x) ragnar::embed_google_vertex(
+      x = x,
+      model = "gemini-embedding-001",
+      location   = "us-central1",
+      project_id = "erudite-store-471414-u0"
+    ),
     overwrite = TRUE
   )
 
