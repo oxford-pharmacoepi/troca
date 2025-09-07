@@ -9,5 +9,5 @@ rsconnect::deployApp(
   forceUpdate = TRUE,
   logLevel = "verbose",
   account = "dpa-pde-oxford",
-  appFiles = c("app.R", "model/key.RData",  "model/troca.duckdb", "renv.lock", ".Renviron")
+  appFiles = c("app.R", "model/key.RData",  "model/troca.duckdb", "renv.lock", ".Renviron", "credentials.json")
 )
