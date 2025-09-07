@@ -26,3 +26,5 @@ Suggests:
     here,
     rsconnect,
     stringr
+Remotes:
+    posit-dev/shinychat/pkg-r

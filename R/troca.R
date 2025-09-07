@@ -31,8 +31,12 @@ troca <- function(chat, storeName = "troca") {
   # set prompt
   chat <- chat$set_system_prompt(value = prompt)
 
+  # avatar
+  avatar <- system.file("logo.png", package = "troca")
+  avatar <- shiny::tags$img(src = avatar, height = "32px")
+
   ui <- bslib::page_fluid(
-    shinychat::chat_ui("chat")
+    shinychat::chat_ui(id = "chat")
   )
 
   server <- function(input, output, session) {
