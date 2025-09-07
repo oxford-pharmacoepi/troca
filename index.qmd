@@ -2,4 +2,6 @@
 
 Hi I am your **T**idy **R** **O**MOP **C**DM **A**ssistant or as friends call me **TROCA**.
 
+<center>
 ![](man/figures/logo.png)
+</center>
