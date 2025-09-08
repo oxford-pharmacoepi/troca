@@ -36,9 +36,6 @@ troca <- function(chat, storeName = "troca") {
   avatar <- shiny::tags$img(src = avatar, height = "32px")
 
   ui <- bslib::page_fluid(
-    shiny::tags$head(
-      shiny::tags$base(target = "_top")
-    ),
     shinychat::chat_ui(id = "chat")
   )
 
